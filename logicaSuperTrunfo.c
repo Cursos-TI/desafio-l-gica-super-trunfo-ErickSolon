@@ -76,12 +76,14 @@ void compararCartas(char *codigoCidade1, char *codigoCidade2, unsigned int popul
     unsigned int pontosTuristicos1 = pontosTuristicos[cidade1];
     unsigned int pontosTuristicos2 = pontosTuristicos[cidade2];
 
+    printf("Comparando Cidade %s e Cidade %s:\n", codigoCidade1, codigoCidade2);
+
     if (pontosTuristicos1 < pontosTuristicos2) {
-        printf("Cidade %s vence nos Pontos Túristicos com valor %.2f\n", codigoCidade1, pontosTuristicos1);
+        printf("Cidade %s vence nos Pontos Túristicos com valor %d\n", codigoCidade1, pontosTuristicos1);
     } else if (pib2 < pib1) {
-        printf("Cidade %s vence nos Pontos Túristicos com valor %.2f\n", codigoCidade2, pontosTuristicos2);
+        printf("Cidade %s vence nos Pontos Túristicos com valor %d\n", codigoCidade2, pontosTuristicos2);
     } else {
-        printf("Empate nos Pontos Túristicos com valor %.2f\n", pib1);
+        printf("Empate nos Pontos Túristicos com valor %d\n", pib1);
     }
 
     if (pib1 < pib2) {
@@ -101,11 +103,11 @@ void compararCartas(char *codigoCidade1, char *codigoCidade2, unsigned int popul
     }
 
     if (populacao1 < populacao2) {
-        printf("Cidade %s vence na População com valor %.2f\n", codigoCidade1, populacao1);
+        printf("Cidade %s vence na População com valor %d\n", codigoCidade1, populacao1);
     } else if (populacao2 < populacao1) {
-        printf("Cidade %s vence na População com valor %.2f\n", codigoCidade2, populacao2);
+        printf("Cidade %s vence na População com valor %d\n", codigoCidade2, populacao2);
     } else {
-        printf("Empate na População com valor %.2f\n", populacao1);
+        printf("Empate na População com valor %d\n", populacao1);
     }
 
     if (area1 < area2) {
@@ -118,8 +120,6 @@ void compararCartas(char *codigoCidade1, char *codigoCidade2, unsigned int popul
 
     float superPoder1 = calcularSuperPoder(populacao[cidade1], area[cidade1], pib[cidade1], pontosTuristicos[cidade1]);
     float superPoder2 = calcularSuperPoder(populacao[cidade2], area[cidade2], pib[cidade2], pontosTuristicos[cidade2]);
-
-    printf("Comparando Cidade %s e Cidade %s:\n", codigoCidade1, codigoCidade2);
 
     if (superPoder1 > superPoder2) {
         printf("Cidade %s vence com Super Poder: %.2f\n", codigoCidade1, superPoder1);
