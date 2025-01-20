@@ -295,7 +295,7 @@ int main() {
             break;
         }
         
-        printf("Escolha qual item a comparação deve ser feita: ");
+        printf("Escolha qual item a comparação deve ser feita:\n");
         printf("1 ... pontos turísticos\n");
         printf("2 ... PIB\n");
         printf("3 ... densidade populacional\n");
