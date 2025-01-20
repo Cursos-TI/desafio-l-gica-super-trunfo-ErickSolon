@@ -34,7 +34,7 @@ float calcularSuperPoder(unsigned int populacao, float area, float pib, unsigned
     float pibPerCapita = calcularPibPerCapita(pib, populacao);
 
     // a densidade populacional deve ser tratada de forma inversa
-    return ((1.0f / densidadePopulacional) + pibPerCapita + pontosTuristicos);
+    return ((1.0f / densidadePopulacional) + pibPerCapita + pontosTuristicos + populacao + area + pib);
 }
 
 // função que retorna o índice de uma cidade no array "codigo".
@@ -82,9 +82,9 @@ void compararCartas(int escolhaComparacao, char *codigoCidade1, char *codigoCida
 
     switch (escolhaComparacao) {
         case 1:
-            if (pontosTuristicos1 < pontosTuristicos2) {
+            if (pontosTuristicos1 > pontosTuristicos2) {
                 printf("Cidade %s vence nos Pontos Túristicos com valor %d\n", codigoCidade1, pontosTuristicos1);
-            } else if (pib2 < pib1) {
+            } else if (pib2 > pib1) {
                 printf("Cidade %s vence nos Pontos Túristicos com valor %d\n", codigoCidade2, pontosTuristicos2);
             } else {
                 printf("Empate nos Pontos Túristicos com valor %d\n", pib1);
@@ -93,9 +93,9 @@ void compararCartas(int escolhaComparacao, char *codigoCidade1, char *codigoCida
             break;
 
         case 2:
-            if (pib1 < pib2) {
+            if (pib1 > pib2) {
                 printf("Cidade %s vence no PIB com valor %.2f\n", codigoCidade1, pib1);
-            } else if (pib2 < pib1) {
+            } else if (pib2 > pib1) {
                 printf("Cidade %s vence no PIB com valor %.2f\n", codigoCidade2, pib2);
             } else {
                 printf("Empate na Área com valor %.2f\n", pib1);
@@ -113,9 +113,9 @@ void compararCartas(int escolhaComparacao, char *codigoCidade1, char *codigoCida
             break;
 
         case 4:
-            if (populacao1 < populacao2) {
+            if (populacao1 > populacao2) {
                 printf("Cidade %s vence na População com valor %d\n", codigoCidade1, populacao1);
-            } else if (populacao2 < populacao1) {
+            } else if (populacao2 > populacao1) {
                 printf("Cidade %s vence na População com valor %d\n", codigoCidade2, populacao2);
             } else {
                 printf("Empate na População com valor %d\n", populacao1);
@@ -123,7 +123,7 @@ void compararCartas(int escolhaComparacao, char *codigoCidade1, char *codigoCida
             break;
 
         case 5:
-            if (area1 < area2) {
+            if (area1 > area2) {
                 printf("Cidade %s vence na Área com valor %.2f\n", codigoCidade1, area1);
             } else if (area2 < area1) {
                 printf("Cidade %s vence na Área com valor %.2f\n", codigoCidade2, area2);
