@@ -48,7 +48,7 @@ int obterIndiceCidade(char *codigoCidade, char codigo[TOTAL_CIDADES][4]) {
 }
 
 // aqui ele compara as cartas
-void compararCartas(char *codigoCidade1, char *codigoCidade2, unsigned int populacao[], float area[], float pib[], unsigned int pontosTuristicos[], char codigo[TOTAL_CIDADES][4]) {
+void compararCartas(int escolhaComparacao, char *codigoCidade1, char *codigoCidade2, unsigned int populacao[], float area[], float pib[], unsigned int pontosTuristicos[], char codigo[TOTAL_CIDADES][4]) {
     int cidade1 = -1, cidade2 = -1;
     
     for (int i = 0; i < TOTAL_CIDADES; i++) {
@@ -75,58 +75,78 @@ void compararCartas(char *codigoCidade1, char *codigoCidade2, unsigned int popul
     float pib2 = pib[cidade2];
     unsigned int pontosTuristicos1 = pontosTuristicos[cidade1];
     unsigned int pontosTuristicos2 = pontosTuristicos[cidade2];
-
-    printf("Comparando Cidade %s e Cidade %s:\n", codigoCidade1, codigoCidade2);
-
-    if (pontosTuristicos1 < pontosTuristicos2) {
-        printf("Cidade %s vence nos Pontos Túristicos com valor %d\n", codigoCidade1, pontosTuristicos1);
-    } else if (pib2 < pib1) {
-        printf("Cidade %s vence nos Pontos Túristicos com valor %d\n", codigoCidade2, pontosTuristicos2);
-    } else {
-        printf("Empate nos Pontos Túristicos com valor %d\n", pib1);
-    }
-
-    if (pib1 < pib2) {
-        printf("Cidade %s vence no PIB com valor %.2f\n", codigoCidade1, pib1);
-    } else if (pib2 < pib1) {
-        printf("Cidade %s vence no PIB com valor %.2f\n", codigoCidade2, pib2);
-    } else {
-        printf("Empate na Área com valor %.2f\n", pib1);
-    }
-
-    if (densidadePopulacional1 < densidadePopulacional2) {
-        printf("Cidade %s vence na Densidade Populacional com valor %.2f\n", codigoCidade1, densidadePopulacional1);
-    } else if (densidadePopulacional2 < densidadePopulacional1) {
-        printf("Cidade %s vence na Densidade Populacional com valor %.2f\n", codigoCidade2, densidadePopulacional2);
-    } else {
-        printf("Empate na Densidade Populacional com valor %.2f\n", densidadePopulacional1);
-    }
-
-    if (populacao1 < populacao2) {
-        printf("Cidade %s vence na População com valor %d\n", codigoCidade1, populacao1);
-    } else if (populacao2 < populacao1) {
-        printf("Cidade %s vence na População com valor %d\n", codigoCidade2, populacao2);
-    } else {
-        printf("Empate na População com valor %d\n", populacao1);
-    }
-
-    if (area1 < area2) {
-        printf("Cidade %s vence na Área com valor %.2f\n", codigoCidade1, area1);
-    } else if (area2 < area1) {
-        printf("Cidade %s vence na Área com valor %.2f\n", codigoCidade2, area2);
-    } else {
-        printf("Empate na Área com valor %.2f\n", area1);
-    }
-
     float superPoder1 = calcularSuperPoder(populacao[cidade1], area[cidade1], pib[cidade1], pontosTuristicos[cidade1]);
     float superPoder2 = calcularSuperPoder(populacao[cidade2], area[cidade2], pib[cidade2], pontosTuristicos[cidade2]);
 
-    if (superPoder1 > superPoder2) {
-        printf("Cidade %s vence com Super Poder: %.2f\n", codigoCidade1, superPoder1);
-    } else if (superPoder2 > superPoder1) {
-        printf("Cidade %s vence com Super Poder: %.2f\n", codigoCidade2, superPoder2);
-    } else {
-        printf("Empate no Super Poder: %.2f\n", superPoder1);
+    printf("Comparando Cidade %s e Cidade %s:\n", codigoCidade1, codigoCidade2);
+
+    switch (escolhaComparacao) {
+        case 1:
+            if (pontosTuristicos1 < pontosTuristicos2) {
+                printf("Cidade %s vence nos Pontos Túristicos com valor %d\n", codigoCidade1, pontosTuristicos1);
+            } else if (pib2 < pib1) {
+                printf("Cidade %s vence nos Pontos Túristicos com valor %d\n", codigoCidade2, pontosTuristicos2);
+            } else {
+                printf("Empate nos Pontos Túristicos com valor %d\n", pib1);
+            }
+
+            break;
+
+        case 2:
+            if (pib1 < pib2) {
+                printf("Cidade %s vence no PIB com valor %.2f\n", codigoCidade1, pib1);
+            } else if (pib2 < pib1) {
+                printf("Cidade %s vence no PIB com valor %.2f\n", codigoCidade2, pib2);
+            } else {
+                printf("Empate na Área com valor %.2f\n", pib1);
+            }
+            break;
+        
+        case 3:
+            if (densidadePopulacional1 < densidadePopulacional2) {
+                printf("Cidade %s vence na Densidade Populacional com valor %.2f\n", codigoCidade1, densidadePopulacional1);
+            } else if (densidadePopulacional2 < densidadePopulacional1) {
+                printf("Cidade %s vence na Densidade Populacional com valor %.2f\n", codigoCidade2, densidadePopulacional2);
+            } else {
+                printf("Empate na Densidade Populacional com valor %.2f\n", densidadePopulacional1);
+            }
+            break;
+
+        case 4:
+            if (populacao1 < populacao2) {
+                printf("Cidade %s vence na População com valor %d\n", codigoCidade1, populacao1);
+            } else if (populacao2 < populacao1) {
+                printf("Cidade %s vence na População com valor %d\n", codigoCidade2, populacao2);
+            } else {
+                printf("Empate na População com valor %d\n", populacao1);
+            }
+            break;
+
+        case 5:
+            if (area1 < area2) {
+                printf("Cidade %s vence na Área com valor %.2f\n", codigoCidade1, area1);
+            } else if (area2 < area1) {
+                printf("Cidade %s vence na Área com valor %.2f\n", codigoCidade2, area2);
+            } else {
+                printf("Empate na Área com valor %.2f\n", area1);
+            }
+            break;
+        
+        case 6:
+            
+
+            if (superPoder1 > superPoder2) {
+                printf("Cidade %s vence com Super Poder: %.2f\n", codigoCidade1, superPoder1);
+            } else if (superPoder2 > superPoder1) {
+                printf("Cidade %s vence com Super Poder: %.2f\n", codigoCidade2, superPoder2);
+            } else {
+                printf("Empate no Super Poder: %.2f\n", superPoder1);
+            }
+            break;
+
+        default:
+            printf("Escolha não reconhecida tente novamente...");
+            break;
     }
 }
 
@@ -263,6 +283,8 @@ int main() {
 
     // aqui é onde é feita a comparação de cada carta
     do {
+        int escolhaComparacaoLoop;
+
         printf("\n\nDigite o código de duas cidades para que sejam comparadas! Exemplo: A01 e A02\n");
         printf("Digite \"-1\" em qualquer input de código de cidade para parar de comparar as cartas e sair do programa!\n");
         printf("Cidade 1: ");
@@ -274,7 +296,17 @@ int main() {
             break;
         }
         
-        compararCartas(digitarCodigoCidade1, digitarCodigoCidade2, populacao, area, pib, pontosTuristicos, codigoCidade);
+        printf("Escolha qual item a comparação deve ser feita: ");
+        printf("1 ... pontos turísticos\n");
+        printf("2 ... PIB\n");
+        printf("3 ... densidade populacional\n");
+        printf("4 ... população\n");
+        printf("5 ... área\n");
+        printf("6 ... super poder\n");
+        printf("Escolha >>> ");
+        scanf("%d", &escolhaComparacaoLoop);
+
+        compararCartas(escolhaComparacaoLoop, digitarCodigoCidade1, digitarCodigoCidade2, populacao, area, pib, pontosTuristicos, codigoCidade);
     } while (1);
 
     return 0;
