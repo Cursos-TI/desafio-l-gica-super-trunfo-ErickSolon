@@ -33,7 +33,7 @@ float calcularSuperPoder(unsigned int populacao, float area, float pib, unsigned
     float densidadePopulacional = calcularDensidadePopulacional(populacao, area);
     float pibPerCapita = calcularPibPerCapita(pib, populacao);
 
-    return ((1.0f / densidadePopulacional + pibPerCapita + pontosTuristicos + populacao + area + pib);
+    return ((1.0f / densidadePopulacional) + pibPerCapita + pontosTuristicos + populacao + area + pib);
 }
 
 // função que retorna o índice de uma cidade no array "codigo".
