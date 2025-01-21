@@ -88,6 +88,7 @@ void compararCartas(int escolhasComparacao[], int totalEscolhas, char *codigoCid
     printf("Número de pontos turísticos: %u\n", pontosTuristicos1);
     printf("Densidade populacional: %.2f hab/km²\n", densidadePopulacional1);
     printf("PIB per capita: %.2f bilhões/habitante\n", pibPerCapita1);
+    printf("Super poder: %.2f\n", superPoder1);
 
     printf("\n=== Código da cidade %s ===\n", codigoCidade2);
     printf("População da cidade: %u\n", populacao2);
@@ -96,6 +97,7 @@ void compararCartas(int escolhasComparacao[], int totalEscolhas, char *codigoCid
     printf("Número de pontos turísticos: %u\n", pontosTuristicos2);
     printf("Densidade populacional: %.2f hab/km²\n", densidadePopulacional2);
     printf("PIB per capita: %.2f bilhões/habitante\n", pibPerCapita2);
+    printf("Super poder: %.2f\n", superPoder2);
 
     printf("\n========= Resultados =========\n");
 
