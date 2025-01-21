@@ -76,8 +76,28 @@ void compararCartas(int escolhasComparacao[], int totalEscolhas, char *codigoCid
     unsigned int pontosTuristicos2 = pontosTuristicos[cidade2];
     float superPoder1 = calcularSuperPoder(populacao[cidade1], area[cidade1], pib[cidade1], pontosTuristicos[cidade1]);
     float superPoder2 = calcularSuperPoder(populacao[cidade2], area[cidade2], pib[cidade2], pontosTuristicos[cidade2]);
+    float pibPerCapita1 = calcularPibPerCapita(pib[cidade1], populacao[cidade1]);
+    float pibPerCapita2 = calcularPibPerCapita(pib[cidade2], populacao[cidade2]);
 
     printf("Comparando Cidade %s e Cidade %s:\n", codigoCidade1, codigoCidade2);
+
+    printf("\n=== Código da cidade %s ===\n", codigoCidade1);
+    printf("População da cidade: %u\n", populacao1);
+    printf("Área da cidade: %.2f km²\n", area1);
+    printf("PIB da cidade: %.2f bilhões\n", pib1);
+    printf("Número de pontos turísticos: %u\n", pontosTuristicos1);
+    printf("Densidade populacional: %.2f hab/km²\n", densidadePopulacional1);
+    printf("PIB per capita: %.2f bilhões/habitante\n", pibPerCapita1);
+
+    printf("\n=== Código da cidade %s ===\n", codigoCidade2);
+    printf("População da cidade: %u\n", populacao2);
+    printf("Área da cidade: %.2f km²\n", area2);
+    printf("PIB da cidade: %.2f bilhões\n", pib2);
+    printf("Número de pontos turísticos: %u\n", pontosTuristicos2);
+    printf("Densidade populacional: %.2f hab/km²\n", densidadePopulacional2);
+    printf("PIB per capita: %.2f bilhões/habitante\n", pibPerCapita2);
+
+    printf("\n========= Resultados =========\n");
 
     for (int i = 0; i < totalEscolhas; i++) {
         switch (escolhasComparacao[i]) {
